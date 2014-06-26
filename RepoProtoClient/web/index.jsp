@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+    
     <%-- start web service invocation --%><hr/>
     <%
     try {
