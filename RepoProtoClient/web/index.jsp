@@ -22,7 +22,7 @@
 	java.lang.String name = "";
 	// TODO process result here
 	java.lang.String result = port.hello(name);
-	out.println("Result = "+result);
+	out.println("Tavo = "+result);
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
