@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-Repository" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/Repository"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Repository" destdir="${build.generated.dir}/jax-wsCache/Repository" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Repository/wsdl/localhost_8080/RepoProtoServer/Repository.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/RepoProtoServer/Repository?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Repository/wsdl/localhost_8080/RepoProtoServer/Repository.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/Repository"/>
+    <target name="wsimport-client-ImageServerImplService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ImageServerImplService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ImageServerImplService" destdir="${build.generated.dir}/jax-wsCache/ImageServerImplService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ImageServerImplService/wsdl/localhost_8080/RepoProtoServer/ImageServerImplService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/RepoProtoServer/ImageServerImplService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ImageServerImplService/wsdl/localhost_8080/RepoProtoServer/ImageServerImplService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ImageServerImplService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/Repository">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ImageServerImplService">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-Repository" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/cl/usach"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/Repository"/>
+    <target name="wsimport-client-clean-ImageServerImplService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/cl/usach/ws"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ImageServerImplService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-Repository"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-ImageServerImplService"/>
 </project>

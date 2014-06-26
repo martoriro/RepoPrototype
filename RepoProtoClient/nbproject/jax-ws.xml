@@ -2,10 +2,10 @@
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services/>
   <clients>
-    <client name="Repository">
-      <wsdl-url>http://localhost:8080/RepoProtoServer/Repository?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/RepoProtoServer/Repository.wsdl</local-wsdl-file>
-      <package-name>cl.usach</package-name>
+    <client name="ImageServerImplService">
+      <wsdl-url>http://localhost:8080/RepoProtoServer/ImageServerImplService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/RepoProtoServer/ImageServerImplService.wsdl</local-wsdl-file>
+      <package-name>cl.usach.ws</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/RepoProtoServer/Repository?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/RepoProtoServer/ImageServerImplService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
