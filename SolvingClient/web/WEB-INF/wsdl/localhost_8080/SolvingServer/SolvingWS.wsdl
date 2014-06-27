@@ -10,15 +10,34 @@
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
 </message>
+<message name="login">
+<part name="parameters" element="tns:login"/>
+</message>
+<message name="loginResponse">
+<part name="parameters" element="tns:loginResponse"/>
+</message>
 <portType name="SolvingWS">
 <operation name="hello">
 <input wsam:Action="http://server.usach.cl/SolvingWS/helloRequest" message="tns:hello"/>
 <output wsam:Action="http://server.usach.cl/SolvingWS/helloResponse" message="tns:helloResponse"/>
 </operation>
+<operation name="login">
+<input wsam:Action="http://server.usach.cl/SolvingWS/loginRequest" message="tns:login"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/loginResponse" message="tns:loginResponse"/>
+</operation>
 </portType>
 <binding name="SolvingWSPortBinding" type="tns:SolvingWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 <operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="login">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -15,6 +15,24 @@
 
     </head>
     <body>
+        <%
+            boolean error = false;
+            try {
+                cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
+                cl.usach.server.SolvingWS port = service.getSolvingWSPort();
+                if (request.getMethod() == "POST") {
+                    //función que verifica usuario
+                    String result = port.login((String) request.getParameter("usuario"), (String) request.getParameter("pass"));
+                    if (!result.equals("")) {
+                        response.sendRedirect(request.getContextPath() + "/" + result);
+                    } else {
+                        error = true;
+                    }
+                }
+            } catch (Exception ex) {
+                error = true;
+            }
+        %>
         <div class="container"> 
             <div class="row" style="margin-top:80px">
                 <div class="col-lg-4"></div>
@@ -22,6 +40,13 @@
                     <img src="resources/images/Logo.jpg" width="160" height="60"/>
 
                     <form role="form"  action="index.jsp" method="post">
+                        <%
+                            if (error == true) {
+                                out.print("<div class='alert alert-danger alert-dismissible' role='alert"
+                                        + "<p><span class='glyphicon glyphicon-warning-sign'></span> <strong>Error: </strong> Usuario o Contraseña incorrecta</p>"
+                                        + "</div>");
+                            }
+                        %>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre de usuario:</label>
                             <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese su rut">
@@ -33,36 +58,11 @@
                         <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Entrar
                         </button>
-                        <div class="form-group">
-                            <p class="bg-danger">Error en</p>
-                        </div>
                     </form>
-
-
                 </div>
                 <div class="col-lg-4"></div>
             </div>
-
-            <%
-                if (request.getMethod() == "POST") {
-                    String nombre = (String) request.getParameter("usuario");
-                    String pass = (String) request.getParameter("pass");
-                    out.print(session.getId());
-                    //función que verifica usuario
-                    if (nombre.equals("gustavo") && pass.equals("gustavo")) {
-
-                        session.setAttribute("user1", nombre);
-                        session.setAttribute("pass2", pass);
-                        //request.login(nombre, pass);
-                        response.sendRedirect(request.getContextPath() + "/admin");
-                    }
-
-                }
-
-
-            %>
         </div>
         <script src="resources/js/bootstrap.min.js"></script>
     </body>
-
 </html>
