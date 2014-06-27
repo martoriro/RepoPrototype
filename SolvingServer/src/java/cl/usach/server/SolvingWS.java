@@ -6,9 +6,12 @@
 
 package cl.usach.server;
 
+import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import sessionbeans.UsuarioFacade;
+import sessionbeans.UsuarioFacadeLocal;
 
 /**
  *
@@ -16,6 +19,8 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "SolvingWS")
 public class SolvingWS {
+    @EJB
+    private UsuarioFacadeLocal usuarioFacade;
 
     /**
      * This is a sample web service operation
@@ -23,5 +28,16 @@ public class SolvingWS {
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "login")
+    public String login(@WebParam(name = "rut") String rut, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        System.out.println("pico");
+        return usuarioFacade.login(rut, password);
+        
     }
 }

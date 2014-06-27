@@ -29,4 +29,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         super(Usuario.class);
     }
     
+    @Override
+    public String login(String rut, String password) {
+        Usuario newUser;
+        newUser = UsuarioFacade.super.find(rut);
+        if(password.equals(newUser.getPassword())){
+            return newUser.getRole();
+        }
+        else{
+            return "";
+        }
+    }  
 }

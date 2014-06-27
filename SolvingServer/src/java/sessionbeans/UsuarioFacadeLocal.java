@@ -31,4 +31,5 @@ public interface UsuarioFacadeLocal {
 
     int count();
     
+    String login(String rut, String password);
 }
