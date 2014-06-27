@@ -79,4 +79,35 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         return informacionUser;
     }
 
+    @Override
+    public boolean addUser(String rut, String password, String nombre, String apellidoPat, String apellidoMat, String rol, String empresa) {
+        
+        Usuario nuevoUsuario = new Usuario(rut);
+        nuevoUsuario.setPassword(password);
+        nuevoUsuario.setNombreuser(nombre);
+        nuevoUsuario.setApellidopat(apellidoPat);
+        nuevoUsuario.setApellidomat(apellidoMat);
+        nuevoUsuario.setRole(rol);
+        
+        Empresa nuevaEmpresa = null;
+        nuevaEmpresa = empresaFacade.buscarPorNombreEmp(empresa);
+        
+        nuevoUsuario.setIdempresa(nuevaEmpresa);
+        
+        UsuarioFacade.super.create(nuevoUsuario);
+        
+        return true;
+    }
+
+    @Override
+    public boolean deleteUser(String rut) {
+        Usuario searchUsuario = null;
+        searchUsuario = UsuarioFacade.super.find(rut);
+        
+        UsuarioFacade.super.remove(searchUsuario);
+        
+        return true;
+    }
+    
+    
 }

@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Solicitud;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -32,5 +33,13 @@ public interface SolicitudFacadeLocal {
     int count();
 
     boolean crearSolicitud(String rut, String nombreReq, String obsevacion);
+
+    List<Solicitud> buscarPorEstado(String estado);
+
+    ArrayList<String> allOpenRequests();
+
+    ArrayList<String> allClosedRequests();
+
+    boolean closeRequest(String idSolicitud);
     
 }

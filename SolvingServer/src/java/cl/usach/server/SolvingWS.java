@@ -80,4 +80,49 @@ public class SolvingWS {
         //TODO write your implementation code here:
         return solicitudFacade.crearSolicitud(rut, nombreReq, observacion);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "nuevoUsuario")
+    public boolean nuevoUsuario(@WebParam(name = "rut") String rut, @WebParam(name = "password") String password, @WebParam(name = "nombre") String nombre, @WebParam(name = "Ap") String Ap, @WebParam(name = "Am") String Am, @WebParam(name = "rol") String rol, @WebParam(name = "empresa") String empresa) {
+        //TODO write your implementation code here:
+        return usuarioFacade.addUser(rut, password, nombre, Ap, Am, rol, empresa);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "borrarUsuario")
+    public boolean borrarUsuario(@WebParam(name = "rut") String rut) {
+        //TODO write your implementation code here:
+        return usuarioFacade.deleteUser(rut);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "allOpenRequests")
+    public ArrayList<String> allOpenRequests() {
+        //TODO write your implementation code here:
+        return solicitudFacade.allOpenRequests();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "allClosedRequests")
+    public ArrayList<String> allClosedRequests() {
+        //TODO write your implementation code here:
+        return solicitudFacade.allClosedRequests();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "closeRequest")
+    public boolean closeRequest(@WebParam(name = "idSolicitud") String idSolicitud) {
+        //TODO write your implementation code here:
+        return solicitudFacade.closeRequest(idSolicitud);
+    }
 }

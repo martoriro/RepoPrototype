@@ -7,9 +7,11 @@
 package sessionbeans;
 
 import entities.Empresa;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,20 @@ public class EmpresaFacade extends AbstractFacade<Empresa> implements EmpresaFac
     public EmpresaFacade() {
         super(Empresa.class);
     }
+
+    @Override
+    public Empresa buscarPorNombreEmp(String nombre) {
+        Empresa nuevaEmpresa = null;
+        List<Empresa> listaEmpresa;
+        Query query;
+        query = em.createNamedQuery("Empresa.findByNombreempresa").
+                setParameter("nombreempresa", nombre);
+        
+        listaEmpresa = query.getResultList();
+        nuevaEmpresa = listaEmpresa.get(0);
+        
+        return nuevaEmpresa;
+    }
+    
     
 }

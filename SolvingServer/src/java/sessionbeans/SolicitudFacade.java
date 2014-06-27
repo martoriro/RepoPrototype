@@ -9,6 +9,7 @@ package sessionbeans;
 import entities.Requirimiento;
 import entities.Solicitud;
 import entities.Usuario;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -58,6 +59,78 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         nuevaSolicitud.setFecha(fecha);
         
         SolicitudFacade.super.create(nuevaSolicitud);
+        
+        return true;
+    }
+
+    @Override
+    public List<Solicitud> buscarPorEstado(String estado) {
+        Query query;
+        query = em.createNamedQuery("Solicitud.findByEstado").
+                setParameter("estado", estado);
+        
+        return query.getResultList();
+    }
+
+    @Override
+    public ArrayList<String> allOpenRequests() {
+        ArrayList<String> solicitudes = new ArrayList<>();
+        String textoSolicitud;
+        
+        List<Solicitud> allOpen = buscarPorEstado("abierta");
+        
+        for (int i = 0; i < allOpen.size(); i++) {
+            textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getRut().getRut();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getIdrequirimiento().getNombrereq();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getEstado();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getFecha();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getObservacion();
+
+            solicitudes.add(textoSolicitud);
+        }
+        
+        return solicitudes;
+    }
+
+    @Override
+    public ArrayList<String> allClosedRequests() {
+        ArrayList<String> solicitudes = new ArrayList<>();
+        String textoSolicitud;
+        
+        List<Solicitud> allOpen = buscarPorEstado("cerrada");
+        
+        for (int i = 0; i < allOpen.size(); i++) {
+            textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getRut().getRut();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getIdrequirimiento().getNombrereq();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getEstado();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getFecha();
+            textoSolicitud += ",";
+            textoSolicitud += allOpen.get(i).getObservacion();
+
+            solicitudes.add(textoSolicitud);
+        }
+        
+        return solicitudes;
+    }
+
+    @Override
+    public boolean closeRequest(String idSolicitud) {
+        Solicitud searchSolicitud = null;
+        searchSolicitud = SolicitudFacade.super.find(Integer.parseInt(idSolicitud));
+        
+        searchSolicitud.setEstado("cerrada");
+        SolicitudFacade.super.edit(searchSolicitud);
         
         return true;
     }

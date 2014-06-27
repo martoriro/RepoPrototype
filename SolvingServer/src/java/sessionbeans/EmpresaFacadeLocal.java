@@ -30,5 +30,7 @@ public interface EmpresaFacadeLocal {
     List<Empresa> findRange(int[] range);
 
     int count();
+
+    Empresa buscarPorNombreEmp(String nombre);
     
 }

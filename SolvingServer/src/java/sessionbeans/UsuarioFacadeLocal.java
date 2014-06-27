@@ -35,4 +35,8 @@ public interface UsuarioFacadeLocal {
     String login(String rut, String password);
     
     ArrayList<String> todosUsuarios();
+
+    boolean addUser(String rut, String password, String nombre, String apellidoPat, String apellidoMat, String rol, String empresa);
+
+    boolean deleteUser(String rut);
 }
