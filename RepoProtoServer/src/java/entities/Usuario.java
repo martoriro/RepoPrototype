@@ -38,6 +38,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByApellidomat", query = "SELECT u FROM Usuario u WHERE u.apellidomat = :apellidomat"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "role")
+    private String role;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -163,6 +168,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "entities.Usuario[ rut=" + rut + " ]";
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
 }
