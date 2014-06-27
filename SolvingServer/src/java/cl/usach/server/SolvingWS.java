@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cl.usach.server;
 
+import entities.Empresa;
+import entities.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
-import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebService;
+import sessionbeans.EmpresaFacadeLocal;
 import sessionbeans.UsuarioFacade;
 import sessionbeans.UsuarioFacadeLocal;
 
@@ -19,6 +23,9 @@ import sessionbeans.UsuarioFacadeLocal;
  */
 @WebService(serviceName = "SolvingWS")
 public class SolvingWS {
+    @EJB
+    private EmpresaFacadeLocal empresaFacade;
+
     @EJB
     private UsuarioFacadeLocal usuarioFacade;
 
@@ -36,8 +43,16 @@ public class SolvingWS {
     @WebMethod(operationName = "login")
     public String login(@WebParam(name = "rut") String rut, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
-        System.out.println("pico");
         return usuarioFacade.login(rut, password);
-        
+
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "allUsers")
+    public ArrayList<ArrayList<String>> allUsers() {
+        //TODO write your implementation code here:
+        return usuarioFacade.todosUsuarios();
     }
 }

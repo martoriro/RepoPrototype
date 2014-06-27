@@ -60,16 +60,16 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         List<Usuario> allUsers = UsuarioFacade.super.findAll();
 
         for (int i = 0; i < allUsers.size(); i++) {
+            fullUser = new ArrayList<String>();
             fullUser.add(allUsers.get(i).getRut());
             fullUser.add(allUsers.get(i).getNombreuser());
             fullUser.add(allUsers.get(i).getApellidopat());
             fullUser.add(allUsers.get(i).getApellidomat());
             fullUser.add(allUsers.get(i).getRole());
-            newEmpresa = empresaFacade.find(allUsers.get(i).getIdempresa());
+            newEmpresa = empresaFacade.find(allUsers.get(i).getIdempresa().getIdempresa());
             fullUser.add(newEmpresa.getNombreempresa());
 
             informacionUser.add(fullUser);
-            fullUser.clear();
         }
 
         return informacionUser;

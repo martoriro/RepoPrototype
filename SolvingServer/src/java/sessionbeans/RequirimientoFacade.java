@@ -29,4 +29,5 @@ public class RequirimientoFacade extends AbstractFacade<Requirimiento> implement
         super(Requirimiento.class);
     }
     
+    
 }
