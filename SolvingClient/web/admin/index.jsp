@@ -13,14 +13,15 @@
         <title>Bienvenido</title>
         <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="../resources/css/generalcss.css" rel="stylesheet">
-
     </head>
     <body>
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="index.jsp">Inicio</a></li>
             <li><a href="solicitudes.jsp">Ver solicitudes</a></li>
-            <li><a href="#">Administrar usuarios</a></li>
-            <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 10px"><b><% out.println(session.getAttribute("user1"));%></b> - <a href="#">Cerrar sesion</a></div>
+            <li><a href="usuarios.jsp">Administrar usuarios</a></li>
+            <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px">
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a>
+            </div>
         </ul>
         <div style="margin-top: 30px; margin-left: 30px">
         <h4>Ultimas solicitudes</h4>

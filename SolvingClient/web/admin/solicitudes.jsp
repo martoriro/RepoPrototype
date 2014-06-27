@@ -12,13 +12,17 @@
         <title>JSP Page</title>
         <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="../resources/css/generalcss.css" rel="stylesheet">
+        <script src="../resources/js/jquery-1.11.1.min.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
     </head>
     <body>
         <ul class="nav nav-tabs" role="tablist">
             <li><a href="index.jsp">Inicio</a></li>
             <li class="active"><a href="solicitudes.jsp">Ver solicitudes</a></li>
-            <li><a href="#">Administrar usuarios</a></li>
-            <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 10px"><b><% out.println(session.getAttribute("user1"));%></b> - <a href="#">Cerrar sesion</a></div>
+            <li><a href="usuarios.jsp">Administrar usuarios</a></li>
+            <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px">
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a>
+            </div>
         </ul>
         <div style="margin-top: 30px; margin-left: 30px">
         <h4>Solicitudes abiertas</h4>
@@ -33,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr data-toggle="modal" data-target="#showRequest">
                     <td>1</td>
                     <td>Arreglar tijeras</td>
                     <td>Se nos echaron a perder las tijeras, cortan alrevés</td>
@@ -80,6 +84,63 @@
             </tbody>
         </table>
         </div>
-        <script src="../resources/js/bootstrap.min.js"></script>
+        
+        <div class="modal fade" id="showRequest" tabindex="-1" role="dialog" aria-labelledby="showrequestModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Solicitud #1</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <label for="rut">Solicitud: </label>
+                                    </td>                            
+                                    <td>
+                                        Arreglar tijeras
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="rut">Fecha: </label>
+                                    </td>                            
+                                    <td>
+                                        28/06/2014
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="empresa">Observacion: </label>
+                                    </td>
+                                    <td>
+                                        Se nos echaron a perder las tijeras, cortan alrevés
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="rol">Empresa: </label>
+                                    </td>                            
+                                    <td>
+                                        3M
+                                    </td>                            
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="rut">Solicitado por: </label>
+                                    </td>                            
+                                    <td>
+                                        Juan Solvo
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Cerrar solicitud</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
