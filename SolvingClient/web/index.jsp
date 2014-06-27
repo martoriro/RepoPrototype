@@ -16,7 +16,10 @@
     </head>
     <body>
         <%
+            HttpSession login = request.getSession();
+            login.invalidate();
             boolean error = false;
+            
             try {
                 cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
                 cl.usach.server.SolvingWS port = service.getSolvingWSPort();
@@ -24,15 +27,19 @@
                     //función que verifica usuario
                     String result = port.login((String) request.getParameter("usuario"), (String) request.getParameter("pass"));
                     if (!result.equals("")) {
-                        response.sendRedirect(request.getContextPath() + "/" + result);
+                        login = request.getSession(true);
+                        login.setAttribute("rut", (String) request.getParameter("usuario"));
+                        login.setAttribute("rol", result);
+                        response.sendRedirect(request.getContextPath() +    "/" + result);
                     } else {
                         error = true;
                     }
+
                 }
             } catch (Exception ex) {
                 error = true;
             }
-        %>
+        %>        
         <div class="container"> 
             <div class="row" style="margin-top:80px">
                 <div class="col-lg-4"></div>
@@ -40,8 +47,7 @@
                     <img src="resources/images/Logo.jpg" width="160" height="60"/>
 
                     <form role="form"  action="index.jsp" method="post">
-                        <%
-                            if (error == true) {
+                        <%                            if (error == true) {
                                 out.print("<div class='alert alert-danger alert-dismissible' role='alert"
                                         + "<p><span class='glyphicon glyphicon-warning-sign'></span> <strong>Error: </strong> Usuario o Contraseña incorrecta</p>"
                                         + "</div>");
