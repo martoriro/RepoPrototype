@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -32,4 +33,6 @@ public interface UsuarioFacadeLocal {
     int count();
     
     String login(String rut, String password);
+    
+    ArrayList<ArrayList<String>> todosUsuarios();
 }
