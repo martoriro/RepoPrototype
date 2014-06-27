@@ -7,6 +7,8 @@
 package sessionbeans;
 
 import entities.Requirimiento;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +29,19 @@ public class RequirimientoFacade extends AbstractFacade<Requirimiento> implement
 
     public RequirimientoFacade() {
         super(Requirimiento.class);
+    }
+
+    @Override
+    public ArrayList<String> listarRequirimientos() {
+        ArrayList<String> requirimientos = new ArrayList<String>();
+        List<Requirimiento> todosRequirimientos;
+        todosRequirimientos = RequirimientoFacade.super.findAll();
+        
+        for(int i = 0; i < todosRequirimientos.size(); i++){
+            requirimientos.add(todosRequirimientos.get(i).getNombrereq());
+        }
+        
+        return requirimientos;
     }
     
     

@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Requirimiento;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,5 +31,7 @@ public interface RequirimientoFacadeLocal {
     List<Requirimiento> findRange(int[] range);
 
     int count();
+
+    ArrayList<String> listarRequirimientos();
     
 }

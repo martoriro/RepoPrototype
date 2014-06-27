@@ -30,5 +30,7 @@ public interface SolicitudFacadeLocal {
     List<Solicitud> findRange(int[] range);
 
     int count();
+
+    boolean crearSolicitud(String rut, String nombreReq, String obsevacion);
     
 }
