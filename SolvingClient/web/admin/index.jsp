@@ -13,6 +13,8 @@
         <title>Bienvenido</title>
         <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="../resources/css/generalcss.css" rel="stylesheet">
+        <script src="../resources/js/jquery-1.11.1.min.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
     </head>
     <body>
         <ul class="nav nav-tabs" role="tablist">
@@ -44,7 +46,6 @@
             </tbody>
         </table>
         </div>
-        <script src="../resources/js/bootstrap.min.js"></script>
     </body>
 
 </html>

@@ -51,23 +51,27 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     }
 
     @Override
-    public ArrayList<ArrayList<String>> todosUsuarios() {
+    public ArrayList<String> todosUsuarios() {
 
-        ArrayList<ArrayList<String>> informacionUser = new ArrayList<ArrayList<String>>();
-        ArrayList<String> fullUser = new ArrayList<String>();
-        Empresa newEmpresa = null;
+        ArrayList<String> informacionUser = new ArrayList<>();
+        String fullUser;
+        Empresa newEmpresa;
 
         List<Usuario> allUsers = UsuarioFacade.super.findAll();
 
         for (int i = 0; i < allUsers.size(); i++) {
-            fullUser = new ArrayList<String>();
-            fullUser.add(allUsers.get(i).getRut());
-            fullUser.add(allUsers.get(i).getNombreuser());
-            fullUser.add(allUsers.get(i).getApellidopat());
-            fullUser.add(allUsers.get(i).getApellidomat());
-            fullUser.add(allUsers.get(i).getRole());
+            fullUser = allUsers.get(i).getRut();
+            fullUser += ",";
+            fullUser += allUsers.get(i).getNombreuser();
+            fullUser += ",";
+            fullUser += allUsers.get(i).getApellidopat();
+            fullUser += ",";
+            fullUser += allUsers.get(i).getApellidomat();
+            fullUser += ",";
+            fullUser += allUsers.get(i).getRole();
+            fullUser += ",";
             newEmpresa = empresaFacade.find(allUsers.get(i).getIdempresa().getIdempresa());
-            fullUser.add(newEmpresa.getNombreempresa());
+            fullUser += newEmpresa.getNombreempresa();
 
             informacionUser.add(fullUser);
         }

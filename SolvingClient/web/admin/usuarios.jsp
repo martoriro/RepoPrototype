@@ -4,6 +4,7 @@
     Author     : Martín
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,25 @@
         <script src="../resources/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <%
+        java.util.List<java.lang.String> result = null;
+        String[] userData;
+        try {
+            cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
+            cl.usach.server.SolvingWS port = service.getSolvingWSPort();
+            if(request.getParameter("addBtn") != null){
+                //port.addUser(request.getParameter("rut");
+                System.out.println(request.getParameter("addBtn"));
+            }
+            result = port.allUsers();
+            if(!request.getParameter("deleteBtn").isEmpty()){
+                //port.deleteUser(request.getParameter("deleteBtn");
+                System.out.println(request.getParameter("deleteBtn"));
+            }
+        } catch (Exception ex) {
+	// TODO handle custom exceptions here
+        }
+    %>
         <ul class="nav nav-tabs" role="tablist">
             <li><a href="index.jsp">Inicio</a></li>
             <li><a href="solicitudes.jsp">Ver solicitudes</a></li>
@@ -24,6 +44,7 @@
                 <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a>
             </div>
         </ul>
+        
         <div style="margin-top: 30px; margin-left: 30px">
             <h4>Usuarios</h4>
             <table class="table table-striped" style="width: 700px">            
@@ -38,22 +59,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-toggle="modal" data-target="#showuser">
-                        <td>Arreglar tijeras</td>                    
-                        <td>3M</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                    </tr>
-                    <tr>
-                        <td>Limpiar baño</td>
-                        <td>Plomeros tropicales</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                        <td>3M</td>
-                    </tr>            
+                <%
+                for (String usuario : result) {
+                        userData = usuario.split(",");
+                        out.println("<tr>");
+                        out.println("<td>" + userData[0] + "</td>");
+                        out.println("<td>" + userData[1] + "</td>");
+                        out.println("<td>" + userData[2] + "</td>");
+                        out.println("<td>" + userData[3] + "</td>");
+                        out.println("<td>" + userData[5] + "</td>");
+                        out.println("<td>" + userData[4] + "</td>");
+                        out.println("<td><button class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-edit'></span></button></td>");
+                        out.println("<td><form><button name='deleteBtn' value='"+userData[0]+"' class='btn btn-sm btn-danger' formmethod='POST' formaction='usuarios.jsp'><span class='glyphicon glyphicon-ban-circle'></span></button></form></td>");
+                        out.println("</tr>");
+                    }
+                %>
                 </tbody>
             </table>
             <button class="btn btn-primary" data-toggle="modal" data-target="#adduser"><span class="glyphicon glyphicon-plus-sign"></span> Agregar usuario</button>
@@ -100,7 +120,8 @@
                     </div>
                 </div>
             </div>
-
+            
+            <form>
             <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="adduserModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -164,10 +185,12 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                            <button name="addBtn" value="addBtn" class="btn btn-success" formmethod="POST" formaction='usuarios.jsp'><span class="glyphicon glyphicon-save"></span> Guardar</button>
                         </div>
                     </div>
                 </div>
             </div>
+           </form>
+            
     </body>
 </html>

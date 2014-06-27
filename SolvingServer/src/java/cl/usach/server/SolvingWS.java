@@ -58,7 +58,7 @@ public class SolvingWS {
      * Web service operation
      */
     @WebMethod(operationName = "allUsers")
-    public ArrayList<ArrayList<String>> allUsers() {
+    public ArrayList<String> allUsers() {
         //TODO write your implementation code here:
         return usuarioFacade.todosUsuarios();
     }

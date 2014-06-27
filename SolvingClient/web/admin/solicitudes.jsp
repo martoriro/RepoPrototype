@@ -142,5 +142,19 @@
                     </div>
                 </div>
             </div>
+        
+    <%-- start web service invocation --%><hr/>
+    <%
+    try {
+	cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
+	cl.usach.server.SolvingWS port = service.getSolvingWSPort();
+	// TODO process result here
+	java.util.List<java.lang.String> result = port.allrequirimientos();
+	out.println("Result = "+result);
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%><hr/>
     </body>
 </html>

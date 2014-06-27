@@ -34,5 +34,5 @@ public interface UsuarioFacadeLocal {
     
     String login(String rut, String password);
     
-    ArrayList<ArrayList<String>> todosUsuarios();
+    ArrayList<String> todosUsuarios();
 }
