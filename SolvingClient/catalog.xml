@@ -3,4 +3,6 @@
     <system systemId="http://localhost:8080/RepoProtoServer/Repository?wsdl" uri="src/conf/xml-resources/web-service-references/Repository/wsdl/localhost_8080/RepoProtoServer/Repository.wsdl"/>
     <system systemId="http://localhost:8080/RepoProtoServer/Repository?xsd=1" uri="src/conf/xml-resources/web-service-references/Repository/wsdl/localhost_8080/RepoProtoServer/Repository.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/RepoProtoServer/ImageServerImplService?wsdl" uri="src/conf/xml-resources/web-service-references/ImageServerImplService/wsdl/localhost_8080/RepoProtoServer/ImageServerImplService.wsdl"/>
+    <system systemId="http://localhost:8080/SolvingServer/SolvingWS?wsdl" uri="src/conf/xml-resources/web-service-references/SolvingWS/wsdl/localhost_8080/SolvingServer/SolvingWS.wsdl"/>
+    <system systemId="http://localhost:8080/SolvingServer/SolvingWS?xsd=1" uri="src/conf/xml-resources/web-service-references/SolvingWS/wsdl/localhost_8080/SolvingServer/SolvingWS.xsd_1.xsd"/>
 </catalog>
