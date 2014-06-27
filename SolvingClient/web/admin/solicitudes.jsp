@@ -1,3 +1,8 @@
+<!-- 
+            TO-DO: Cargar solicitudes abiertas.
+                   Cargar solicitudes cerradas.
+                   Cerrar solicitudes.
+-->
 <%-- 
     Document   : solicitudes
     Created on : 27-06-2014, 12:15:36 PM
@@ -21,7 +26,7 @@
             <li class="active"><a href="solicitudes.jsp">Ver solicitudes</a></li>
             <li><a href="usuarios.jsp">Administrar usuarios</a></li>
             <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px">
-                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a>
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out" onclick="location = '<% out.print(request.getContextPath());%>'"></span> Cerrar sesion</a>
             </div>
         </ul>
         <div style="margin-top: 30px; margin-left: 30px">

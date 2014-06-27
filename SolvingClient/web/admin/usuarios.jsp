@@ -1,3 +1,7 @@
+<!-- 
+            TO-DO: Cargar empresas desde la base de datos.
+                   Editar.
+-->
 <%-- 
     Document   : usuarios
     Created on : 27-06-2014, 01:30:12 PM
@@ -24,8 +28,9 @@
             cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
             cl.usach.server.SolvingWS port = service.getSolvingWSPort();
             if(request.getParameter("addBtn") != null){
-                //port.addUser(request.getParameter("rut");
-                System.out.println(request.getParameter("addBtn"));
+                //port.addUser(request.getParameter("rut"),request.getParameter("pass"),request.getParameter("nombre"),request.getParameter("apellidop"),request.getParameter("apellidom"),request.getParameter("rol"),request.getParameter("empresa"));
+                System.out.println(request.getParameter("rut"));
+                
             }
             result = port.allUsers();
             if(!request.getParameter("deleteBtn").isEmpty()){
@@ -41,7 +46,7 @@
             <li><a href="solicitudes.jsp">Ver solicitudes</a></li>
             <li class="active"><a href="usuarios.jsp">Administrar usuarios</a></li>
             <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px">
-                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a>
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out" onclick="location = '<% out.print(request.getContextPath());%>'"></span> Cerrar sesion</a>
             </div>
         </ul>
         
@@ -136,7 +141,7 @@
                                         <label for="rut">Rut: </label>
                                     </td>                            
                                     <td>
-                                        <input id="rut">
+                                        <input name="rut" id="rut">
                                     </td>
                                 </tr>
                                 <tr>
@@ -144,7 +149,7 @@
                                         <label for="pass">Contraseña: </label>
                                     </td>
                                     <td>
-                                        <input id="pass">
+                                        <input name="pass" id="pass">
                                     </td>
                                 </tr>
                                 <tr>
@@ -152,7 +157,7 @@
                                         <label for="nombre">Nombre: </label>
                                     </td>                            
                                     <td>
-                                        <input id="nombre">
+                                        <input name="nombre" id="nombre">
                                     </td>                            
                                 </tr>
                                 <tr>
@@ -160,7 +165,7 @@
                                         <label for="apellidop">Apellido Paterno: </label>
                                     </td>                            
                                     <td>
-                                        <input id="apellidop">
+                                        <input name="apellidop" id="apellidop">
                                     </td>                            
                                 </tr>
                                 <tr>
@@ -168,7 +173,7 @@
                                         <label for="apellidom">Apellido Materno: </label>
                                     </td>                            
                                     <td>
-                                        <input id="apellidom">
+                                        <input name="apellidom" id="apellidom">
                                     </td>                            
                                 </tr>
                                 <tr>
@@ -176,7 +181,7 @@
                                         <label for="rol">Rol: </label>
                                     </td>                            
                                     <td>
-                                        <select id="rol">
+                                        <select name="rol" id="rol">
                                             <option value="client">Cliente</option>
                                             <option value="admin" labe="chao">Administrador</option>
                                         </select>
