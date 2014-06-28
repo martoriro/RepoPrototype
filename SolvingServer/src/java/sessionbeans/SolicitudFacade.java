@@ -8,6 +8,7 @@ package sessionbeans;
 import entities.Requirimiento;
 import entities.Solicitud;
 import entities.Usuario;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,8 +49,11 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
 
         List<Requirimiento> requirimientoBuscado = query.getResultList();
         Requirimiento newRequirimiento = requirimientoBuscado.get(0);
+        
+        
         Date fecha;
         fecha = new Date();
+        
 
         Solicitud nuevaSolicitud = new Solicitud(null);
         nuevaSolicitud.setEstado("pendiente");
@@ -78,6 +82,9 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         String textoSolicitud;
 
         List<Solicitud> allOpen = buscarPorEstado("abierta");
+        
+        DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        Date fecha;
 
         for (int i = 0; i < allOpen.size(); i++) {
             textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
@@ -88,7 +95,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getEstado();
             textoSolicitud += ",";
-            textoSolicitud += allOpen.get(i).getFecha();
+            textoSolicitud += dfDateMedium.format(allOpen.get(i).getFecha());
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getObservacion();
 
@@ -104,6 +111,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         String textoSolicitud;
 
         List<Solicitud> allOpen = buscarPorEstado("cerrada");
+        DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
         for (int i = 0; i < allOpen.size(); i++) {
             textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
@@ -114,7 +122,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getEstado();
             textoSolicitud += ",";
-            textoSolicitud += allOpen.get(i).getFecha();
+            textoSolicitud += dfDateMedium.format(allOpen.get(i).getFecha());
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getObservacion();
 
@@ -143,6 +151,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         String textoSolicitud;
 
         List<Solicitud> usuarioSolicitutedes = buscarSolicitudPorRut(searchUsuario);
+        DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
         for (int i = 0; i < usuarioSolicitutedes.size(); i++) {
             textoSolicitud = Integer.toString(usuarioSolicitutedes.get(i).getIdsolicitud());
@@ -153,7 +162,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
             textoSolicitud += ",";
             textoSolicitud += usuarioSolicitutedes.get(i).getEstado();
             textoSolicitud += ",";
-            textoSolicitud += usuarioSolicitutedes.get(i).getFecha();
+            textoSolicitud += dfDateMedium.format(usuarioSolicitutedes.get(i).getFecha());
             textoSolicitud += ",";
             textoSolicitud += usuarioSolicitutedes.get(i).getObservacion();
 
@@ -177,6 +186,8 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         Solicitud searchSolicitud = SolicitudFacade.super.find(id);
         String textoSolicitud;
         
+        DateFormat dfDateMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        
         textoSolicitud = Integer.toString(searchSolicitud.getIdsolicitud());
         textoSolicitud += ",";
         textoSolicitud += searchSolicitud.getRut().getRut();
@@ -185,7 +196,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         textoSolicitud += ",";
         textoSolicitud += searchSolicitud.getEstado();
         textoSolicitud += ",";
-        textoSolicitud += searchSolicitud.getFecha();
+        textoSolicitud += dfDateMedium.format(searchSolicitud.getFecha());
         textoSolicitud += ",";
         textoSolicitud += searchSolicitud.getObservacion();
 
