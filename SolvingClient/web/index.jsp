@@ -30,6 +30,7 @@
                         login = request.getSession(true);
                         login.setAttribute("rut", (String) request.getParameter("usuario"));
                         login.setAttribute("rol", result);
+                        login.setAttribute("pass", (String) request.getParameter("pass"));
                         response.sendRedirect(request.getContextPath() +    "/" + result);
                     } else {
                         error = true;

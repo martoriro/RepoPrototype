@@ -17,7 +17,14 @@
         <link href="../resources/css/generalcss.css" rel="stylesheet">
         <script src="../resources/js/jquery-1.11.1.min.js"></script>
         <script src="../resources/js/bootstrap.min.js"></script>
+        <script language="JavaScript">
+            function mandar() {
+                window.open('detalleSolicitud.jsp', 'popup', 'toolbar= no,location=no,directories=no,status=no,menubar=no ,scrollbars=yes,resizable=no,width=410,height=400');
+                formu.submit();
+            }
+        </script>
         <%@ include file="../resources/codigos/seguridadCliente.jsp" %>
+
     </head>
     <body> 
         <%            cl.usach.server.SolvingWS_Service service = new cl.usach.server.SolvingWS_Service();
@@ -29,7 +36,7 @@
             <li><a href="configCuenta.jsp">Configurar cuenta</a></li>            
             <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px; margin-bottom: 5px;">
                 <b><% out.println(session.getAttribute("user1"));%>&nbsp;</b>                
-                <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out" onclick="location = '<% out.print(request.getContextPath());%>'"></span> Cerrar sesion</a>
+                <button class="btn btn-danger" onclick="location = '<%out.print(request.getContextPath());%>'"><span class="glyphicon glyphicon-log-out" ></span> Cerrar sesion</button>
             </div>
         </ul>
 
@@ -41,7 +48,7 @@
 
         <div style="margin-top: 30px; margin-left: 30px">            
             <h4>Solicitudes realizadas</h4>
-            <form action="index.jsp" method="post">
+            <form action="detalleSolicitud.jsp" method="post" target="popup">
                 <table class="table table-striped" style="width: 700px">            
                     <thead>
                         <tr>                    
@@ -53,7 +60,7 @@
                     </thead>
                     <tbody>
                         <%
-                            String auxDatosSolicitud = "";
+                            
                             try {
                                 //Llenado de tabla
                                 List<String> solicitudesUsuario = new ArrayList<String>();
@@ -71,7 +78,7 @@
                                         out.println("<td>" + auxSolicitudesUsuario[4] + "</td>");
                                         out.println("<td>" + auxSolicitudesUsuario[3] + "</td>");
                                         out.println("<td>" + auxSolicitudesUsuario[2] + "</td>");
-                                        out.println("<td><button class='btn btn-sm btn-success' name='btnIdSolicitud' value='" + auxSolicitudesUsuario[0] + "' data-toggle='modal' data-target='#showRequest'><span class='glyphicon glyphicon-search'></span></button></td>");
+                                        out.println("<td><button type='submit' onClick='mandar();' class='btn btn-sm btn-success' name='btnIdSolicitud' value='" + auxSolicitudesUsuario[0] + "'><span class='glyphicon glyphicon-search'></span></button></td>");
                                         out.println("</tr>");
                                     }
                                 }
@@ -83,94 +90,25 @@
                 </table>
             </form>
         </div>
-        <%
-            int idSolicitud = 0;
-            if (request.getMethod() == "POST" && request.getParameter("btnIdSolicitud") != null) {
-                idSolicitud = Integer.parseInt(request.getParameter("btnIdSolicitud"));
-                auxDatosSolicitud = port.datosSolicitud(idSolicitud);
-                System.out.println(auxDatosSolicitud);
-            }
-            String[] DatosSolicitud = auxDatosSolicitud.split(",");
-            int cantDat = DatosSolicitud.length;
-        %>
-        <div class="modal fade" id="showRequest" tabindex="-1" role="dialog" aria-labelledby="showrequestModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Solicitud <%if (cantDat == 6) {
-                                out.print(DatosSolicitud[0]);
-                            } %></h4>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                            <tr>
-                                <td>
-                                    <label for="rut">Requerimiento: </label>
-                                </td>                            
-                                <td>
-                                    <%if (cantDat == 6) {
-                                            out.print(DatosSolicitud[2]);
-                                        } %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="rut">Estado: </label>
-                                </td>                            
-                                <td>
-                                    <%if (cantDat == 6) {
-                                            out.print(DatosSolicitud[3]);
-                                        } %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="rut">Fecha: </label>
-                                </td>                            
-                                <td>
-                                    <%if (cantDat == 6) {
-                                            out.print(DatosSolicitud[4]);
-                                        } %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="empresa">Observaciones: </label>
-                                </td>
-                                <td>
-                                    <%if (cantDat == 6) {
-                                            out.print(DatosSolicitud[5]);
-                                        } %>
-                                </td>
-                            </tr>
-
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"  class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-log-out"></span> cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <%
 
             if (request.getMethod() == "POST" && request.getParameter("bntNuevaSolicitud") != null) {
                 String requerimiento = request.getParameter("req");
                 String observaciones = request.getParameter("obs");
-                if (requerimiento == "" || observaciones == "") {
-                    //
+                System.out.println("Los datos son:"+ requerimiento.length() +"n x"+observaciones.length());
+                if (requerimiento.length()==0 || observaciones.length()==0) {
+                    
                 } else {
                     if (port.crearSolicitud((String) login.getAttribute("rut"), requerimiento, observaciones)) {
-                        response.setIntHeader("Refresh", 0);    
+                        response.setIntHeader("Refresh", 0);
                     }
 
                 }
 
             }
         %>
-
         <form action="index.jsp" method="post" >                        
             <div class="modal fade" id="crearSolicitud" tabindex="-1" role="dialog" aria-labelledby="showrequestModal" aria-hidden="true">
                 <div class="modal-dialog">
