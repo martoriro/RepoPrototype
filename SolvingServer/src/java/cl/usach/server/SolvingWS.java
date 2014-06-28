@@ -144,4 +144,14 @@ public class SolvingWS {
         System.out.println(solicitudFacade.allUserRequest(rut).size());
         return solicitudFacade.allUserRequest(rut);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "datosSolicitud")
+    public String datosSolicitud(@WebParam(name = "id") int id) {
+        //TODO write your implementation code here:
+        System.out.println(solicitudFacade.datosSolicitud(id));
+        return solicitudFacade.datosSolicitud(id);
+    }
 }

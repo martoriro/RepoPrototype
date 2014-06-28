@@ -46,5 +46,7 @@ public interface SolicitudFacadeLocal {
     ArrayList<String> allUserRequest(String rut);
 
     List<Solicitud> buscarSolicitudPorRut(Usuario rut);
+
+    String datosSolicitud(int id);
     
 }
