@@ -126,4 +126,18 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         return fullUser;
     }
 
+    @Override
+    public boolean cambiarPassword(String rut, String nuevaPassword) {
+        Usuario usuarioBuscado = null;
+        usuarioBuscado = UsuarioFacade.super.find(rut);
+        
+        usuarioBuscado.setPassword(nuevaPassword);
+        
+        UsuarioFacade.super.edit(usuarioBuscado);
+
+        return true;
+    }
+    
+    
+
 }

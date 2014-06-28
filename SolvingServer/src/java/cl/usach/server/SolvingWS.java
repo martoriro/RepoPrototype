@@ -141,7 +141,6 @@ public class SolvingWS {
     @WebMethod(operationName = "allUserRequest")
     public ArrayList<String> allUserRequest(@WebParam(name = "rut") String rut) {
         //TODO write your implementation code here:
-        System.out.println(solicitudFacade.allUserRequest(rut).size());
         return solicitudFacade.allUserRequest(rut);
     }
 
@@ -151,7 +150,15 @@ public class SolvingWS {
     @WebMethod(operationName = "datosSolicitud")
     public String datosSolicitud(@WebParam(name = "id") int id) {
         //TODO write your implementation code here:
-        System.out.println(solicitudFacade.datosSolicitud(id));
         return solicitudFacade.datosSolicitud(id);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "cambiarPassword")
+    public boolean cambiarPassword(@WebParam(name = "rut") String rut, @WebParam(name = "nuevaPassword") String nuevaPassword) {
+        //TODO write your implementation code here:
+        return usuarioFacade.cambiarPassword(rut, nuevaPassword);
     }
 }

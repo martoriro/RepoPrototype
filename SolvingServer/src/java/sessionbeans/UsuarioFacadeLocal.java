@@ -41,4 +41,6 @@ public interface UsuarioFacadeLocal {
     boolean deleteUser(String rut);
 
     String buscarUsuario(String rut);
+
+    boolean cambiarPassword(String rut, String nuevaPassword);
 }
