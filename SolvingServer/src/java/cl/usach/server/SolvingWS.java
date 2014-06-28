@@ -161,4 +161,22 @@ public class SolvingWS {
         //TODO write your implementation code here:
         return usuarioFacade.cambiarPassword(rut, nuevaPassword);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "nuevaEmpresa")
+    public boolean nuevaEmpresa(@WebParam(name = "nombreEmpresa") String nombreEmpresa) {
+        //TODO write your implementation code here:
+        return empresaFacade.nuevaEmpresa(nombreEmpresa);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "todasEmpresas")
+    public ArrayList<String> todasEmpresas() {
+        //TODO write your implementation code here:
+        return empresaFacade.todasEmpresas();
+    }
 }

@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Empresa;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -32,5 +33,9 @@ public interface EmpresaFacadeLocal {
     int count();
 
     Empresa buscarPorNombreEmp(String nombre);
+
+    boolean nuevaEmpresa(String nombreEmpresa);
+
+    ArrayList<String> todasEmpresas();
     
 }

@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Empresa;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -44,6 +45,34 @@ public class EmpresaFacade extends AbstractFacade<Empresa> implements EmpresaFac
         
         return nuevaEmpresa;
     }
+
+    @Override
+    public boolean nuevaEmpresa(String nombreEmpresa) {
+        
+        Empresa nuevaEmpresa = new Empresa(null);
+        nuevaEmpresa.setNombreempresa(nombreEmpresa);
+        
+        EmpresaFacade.super.create(nuevaEmpresa);
+        
+        return true;
+    }
+
+    @Override
+    public ArrayList<String> todasEmpresas() {
+        ArrayList<String> empresasString = new ArrayList<>();
+        String empresaNombre;
+
+        List<Empresa> allEmpresas = EmpresaFacade.super.findAll();
+
+        for (int i = 0; i < allEmpresas.size(); i++) {
+            empresaNombre = allEmpresas.get(i).getNombreempresa();
+            empresasString.add(empresaNombre);
+        }
+        return empresasString; 
+    }
+    
+    
+    
     
     
 }
