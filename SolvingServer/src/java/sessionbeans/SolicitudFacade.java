@@ -89,7 +89,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         for (int i = 0; i < allOpen.size(); i++) {
             textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
             textoSolicitud += ",";
-            textoSolicitud += allOpen.get(i).getRut().getRut();
+            textoSolicitud += allOpen.get(i).getRut().getIdempresa().getNombreempresa();
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getIdrequirimiento().getNombrereq();
             textoSolicitud += ",";
@@ -116,7 +116,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         for (int i = 0; i < allOpen.size(); i++) {
             textoSolicitud = Integer.toString(allOpen.get(i).getIdsolicitud());
             textoSolicitud += ",";
-            textoSolicitud += allOpen.get(i).getRut().getRut();
+            textoSolicitud += allOpen.get(i).getRut().getIdempresa().getNombreempresa();
             textoSolicitud += ",";
             textoSolicitud += allOpen.get(i).getIdrequirimiento().getNombrereq();
             textoSolicitud += ",";
