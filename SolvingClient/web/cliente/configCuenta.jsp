@@ -19,33 +19,23 @@
     </head>
     <body>        
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="index.jsp">Inicio</a></li>
-            <li><a href="configCuenta.jsp">Configurar cuenta</a></li>            
+            <li><a href="index.jsp">Inicio</a></li>
+            <li class="active"><a href="configCuenta.jsp">Configurar cuenta</a></li>            
             <div style="float: right; vertical-align: middle; margin-right: 10px; margin-top: 5px; margin-bottom: 5px;">
                 <b><% out.println(session.getAttribute("user1"));%>&nbsp;</b>                
                 <button class="btn btn-danger"><span class="glyphicon glyphicon-log-out" onclick="location = '<% out.print(request.getContextPath());%>'"></span> Cerrar sesion</a>
             </div>
         </ul>
         <div style="margin-top: 30px; margin-left: 30px">
+            <h4>Configurar Cuenta</h4>
+            <br/>
             <div class="col-lg-4">
                 <form role="form" class="inline">
-                        <label for="rut">Rut:</label>
-                        <input type="text" class="form-control" id="rut">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre">
-                        <label for="aPat:">Apellido Paterno:</label>
-                        <input type="text" class="form-control" id="aPat">
-                        <label for="aMat">Apellido Materno</label>
-                        <input type="text" class="form-control" id="aMat">
                         <label for="pass1">Contraseña:</label>
-                        <input type="password" class="form-control" id="pass1">
+                        <input type="password" name="pass1" class="form-control" id="pass1">
                         <label for="pass2">Repita Contraseña:</label>
-                        <input type="password" class="form-control" id="pass2">
-
-                    <div class="form-group">
-                        <label for="mail">Email:</label>
-                        <input type="email" class="form-control" id="mail">
-                    </div>                   
+                        <input type="password" name="pass2" class="form-control" id="pass2">      
+                        <br/>
                         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                 </form>
             </div>
