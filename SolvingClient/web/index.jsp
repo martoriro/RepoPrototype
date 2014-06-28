@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido a ShareFile</title>
+        <title>Bienvenido a Solving</title>
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="resources/css/generalcss.css" rel="stylesheet">
 
