@@ -125,4 +125,23 @@ public class SolvingWS {
         //TODO write your implementation code here:
         return solicitudFacade.closeRequest(idSolicitud);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "buscarUsuario")
+    public String buscarUsuario(@WebParam(name = "rut") String rut) {
+        //TODO write your implementation code here:
+        return usuarioFacade.buscarUsuario(rut);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "allUserRequest")
+    public ArrayList<String> allUserRequest(@WebParam(name = "rut") String rut) {
+        //TODO write your implementation code here:
+        System.out.println(solicitudFacade.allUserRequest(rut).size());
+        return solicitudFacade.allUserRequest(rut);
+    }
 }

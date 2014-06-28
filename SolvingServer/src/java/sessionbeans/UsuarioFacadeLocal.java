@@ -39,4 +39,6 @@ public interface UsuarioFacadeLocal {
     boolean addUser(String rut, String password, String nombre, String apellidoPat, String apellidoMat, String rol, String empresa);
 
     boolean deleteUser(String rut);
+
+    String buscarUsuario(String rut);
 }

@@ -71,6 +71,8 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         
         return query.getResultList();
     }
+    
+    
 
     @Override
     public ArrayList<String> allOpenRequests() {
@@ -134,6 +136,44 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         
         return true;
     }
+
+    @Override
+    public ArrayList<String> allUserRequest(String rut) {
+        Usuario searchUsuario = usuarioFacade.find(rut);
+        
+        ArrayList<String> solicitudes = new ArrayList<>();
+        String textoSolicitud;
+        
+        List<Solicitud> usuarioSolicitutedes = buscarSolicitudPorRut(searchUsuario);
+        
+        for (int i = 0; i < usuarioSolicitutedes.size(); i++) {
+            textoSolicitud = Integer.toString(usuarioSolicitutedes.get(i).getIdsolicitud());
+            textoSolicitud += ",";
+            textoSolicitud += usuarioSolicitutedes.get(i).getRut().getRut();
+            textoSolicitud += ",";
+            textoSolicitud += usuarioSolicitutedes.get(i).getIdrequirimiento().getNombrereq();
+            textoSolicitud += ",";
+            textoSolicitud += usuarioSolicitutedes.get(i).getEstado();
+            textoSolicitud += ",";
+            textoSolicitud += usuarioSolicitutedes.get(i).getFecha();
+            textoSolicitud += ",";
+            textoSolicitud += usuarioSolicitutedes.get(i).getObservacion();
+
+            solicitudes.add(textoSolicitud);
+        }
+        
+        return solicitudes;
+    }
+
+    @Override
+    public List<Solicitud> buscarSolicitudPorRut(Usuario rut) {
+        Query query;
+        query = em.createNamedQuery("Solicitud.findByRut").
+                setParameter("rut", rut);
+        
+        return query.getResultList();
+    }
+    
     
     
 }

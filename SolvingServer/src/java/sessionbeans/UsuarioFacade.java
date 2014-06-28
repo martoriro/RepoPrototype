@@ -20,6 +20,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFacadeLocal {
+
     @EJB
     private EmpresaFacadeLocal empresaFacade;
 
@@ -81,21 +82,21 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
 
     @Override
     public boolean addUser(String rut, String password, String nombre, String apellidoPat, String apellidoMat, String rol, String empresa) {
-        
+
         Usuario nuevoUsuario = new Usuario(rut);
         nuevoUsuario.setPassword(password);
         nuevoUsuario.setNombreuser(nombre);
         nuevoUsuario.setApellidopat(apellidoPat);
         nuevoUsuario.setApellidomat(apellidoMat);
         nuevoUsuario.setRole(rol);
-        
+
         Empresa nuevaEmpresa = null;
         nuevaEmpresa = empresaFacade.buscarPorNombreEmp(empresa);
-        
+
         nuevoUsuario.setIdempresa(nuevaEmpresa);
-        
+
         UsuarioFacade.super.create(nuevoUsuario);
-        
+
         return true;
     }
 
@@ -103,11 +104,26 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public boolean deleteUser(String rut) {
         Usuario searchUsuario = null;
         searchUsuario = UsuarioFacade.super.find(rut);
-        
+
         UsuarioFacade.super.remove(searchUsuario);
-        
+
         return true;
     }
-    
-    
+
+    @Override
+    public String buscarUsuario(String rut) {
+
+        String fullUser;
+
+        Usuario searchUser = UsuarioFacade.super.find(rut);
+
+        fullUser = searchUser.getNombreuser();
+        fullUser += ",";
+        fullUser += searchUser.getApellidopat();
+        fullUser += ",";
+        fullUser += searchUser.getApellidomat();
+
+        return fullUser;
+    }
+
 }

@@ -7,6 +7,7 @@
 package sessionbeans;
 
 import entities.Solicitud;
+import entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
@@ -41,5 +42,9 @@ public interface SolicitudFacadeLocal {
     ArrayList<String> allClosedRequests();
 
     boolean closeRequest(String idSolicitud);
+
+    ArrayList<String> allUserRequest(String rut);
+
+    List<Solicitud> buscarSolicitudPorRut(Usuario rut);
     
 }
