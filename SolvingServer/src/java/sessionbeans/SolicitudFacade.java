@@ -56,7 +56,7 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> implements Solici
         
 
         Solicitud nuevaSolicitud = new Solicitud(null);
-        nuevaSolicitud.setEstado("pendiente");
+        nuevaSolicitud.setEstado("abierta");
         nuevaSolicitud.setRut(newUsuario);
         nuevaSolicitud.setIdrequirimiento(newRequirimiento);
         nuevaSolicitud.setObservacion(obsevacion);

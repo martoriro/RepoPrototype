@@ -1,5 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://server.usach.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://server.usach.cl/">
 
+<xs:element name="allClosedRequests" type="tns:allClosedRequests"/>
+
+<xs:element name="allClosedRequestsResponse" type="tns:allClosedRequestsResponse"/>
+
+<xs:element name="allOpenRequests" type="tns:allOpenRequests"/>
+
+<xs:element name="allOpenRequestsResponse" type="tns:allOpenRequestsResponse"/>
+
+<xs:element name="allUserRequest" type="tns:allUserRequest"/>
+
+<xs:element name="allUserRequestResponse" type="tns:allUserRequestResponse"/>
+
 <xs:element name="allUsers" type="tns:allUsers"/>
 
 <xs:element name="allUsersResponse" type="tns:allUsersResponse"/>
@@ -8,9 +20,29 @@
 
 <xs:element name="allrequirimientosResponse" type="tns:allrequirimientosResponse"/>
 
+<xs:element name="borrarUsuario" type="tns:borrarUsuario"/>
+
+<xs:element name="borrarUsuarioResponse" type="tns:borrarUsuarioResponse"/>
+
+<xs:element name="buscarUsuario" type="tns:buscarUsuario"/>
+
+<xs:element name="buscarUsuarioResponse" type="tns:buscarUsuarioResponse"/>
+
+<xs:element name="cambiarPassword" type="tns:cambiarPassword"/>
+
+<xs:element name="cambiarPasswordResponse" type="tns:cambiarPasswordResponse"/>
+
+<xs:element name="closeRequest" type="tns:closeRequest"/>
+
+<xs:element name="closeRequestResponse" type="tns:closeRequestResponse"/>
+
 <xs:element name="crearSolicitud" type="tns:crearSolicitud"/>
 
 <xs:element name="crearSolicitudResponse" type="tns:crearSolicitudResponse"/>
+
+<xs:element name="datosSolicitud" type="tns:datosSolicitud"/>
+
+<xs:element name="datosSolicitudResponse" type="tns:datosSolicitudResponse"/>
 
 <xs:element name="hello" type="tns:hello"/>
 
@@ -20,6 +52,30 @@
 
 <xs:element name="loginResponse" type="tns:loginResponse"/>
 
+<xs:element name="nuevaEmpresa" type="tns:nuevaEmpresa"/>
+
+<xs:element name="nuevaEmpresaResponse" type="tns:nuevaEmpresaResponse"/>
+
+<xs:element name="nuevoUsuario" type="tns:nuevoUsuario"/>
+
+<xs:element name="nuevoUsuarioResponse" type="tns:nuevoUsuarioResponse"/>
+
+<xs:element name="todasEmpresas" type="tns:todasEmpresas"/>
+
+<xs:element name="todasEmpresasResponse" type="tns:todasEmpresasResponse"/>
+
+<xs:complexType name="buscarUsuario">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="allUsers">
 <xs:sequence/>
 </xs:complexType>
@@ -27,6 +83,31 @@
 <xs:complexType name="allUsersResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cambiarPassword">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+<xs:element name="nuevaPassword" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cambiarPasswordResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="borrarUsuario">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="borrarUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -53,6 +134,98 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="crearSolicitud">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreReq" type="xs:string" minOccurs="0"/>
+<xs:element name="observacion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="crearSolicitudResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allOpenRequests">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="allOpenRequestsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="closeRequest">
+<xs:sequence>
+<xs:element name="idSolicitud" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="closeRequestResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allUserRequest">
+<xs:sequence>
+<xs:element name="rut" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allUserRequestResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="todasEmpresas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="todasEmpresasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="nuevaEmpresa">
+<xs:sequence>
+<xs:element name="nombreEmpresa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="nuevaEmpresaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allClosedRequests">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="allClosedRequestsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="datosSolicitud">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="datosSolicitudResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="hello">
 <xs:sequence>
 <xs:element name="name" type="xs:string" minOccurs="0"/>
@@ -65,15 +238,19 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="crearSolicitud">
+<xs:complexType name="nuevoUsuario">
 <xs:sequence>
 <xs:element name="rut" type="xs:string" minOccurs="0"/>
-<xs:element name="nombreReq" type="xs:string" minOccurs="0"/>
-<xs:element name="observacion" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="Ap" type="xs:string" minOccurs="0"/>
+<xs:element name="Am" type="xs:string" minOccurs="0"/>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+<xs:element name="empresa" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="crearSolicitudResponse">
+<xs:complexType name="nuevoUsuarioResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
 </xs:sequence>

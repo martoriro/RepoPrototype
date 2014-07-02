@@ -4,6 +4,90 @@
 <xsd:import namespace="http://server.usach.cl/" schemaLocation="http://localhost:8080/SolvingServer/SolvingWS?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="allClosedRequests">
+<part name="parameters" element="tns:allClosedRequests"/>
+</message>
+<message name="allClosedRequestsResponse">
+<part name="parameters" element="tns:allClosedRequestsResponse"/>
+</message>
+<message name="buscarUsuario">
+<part name="parameters" element="tns:buscarUsuario"/>
+</message>
+<message name="buscarUsuarioResponse">
+<part name="parameters" element="tns:buscarUsuarioResponse"/>
+</message>
+<message name="cambiarPassword">
+<part name="parameters" element="tns:cambiarPassword"/>
+</message>
+<message name="cambiarPasswordResponse">
+<part name="parameters" element="tns:cambiarPasswordResponse"/>
+</message>
+<message name="allOpenRequests">
+<part name="parameters" element="tns:allOpenRequests"/>
+</message>
+<message name="allOpenRequestsResponse">
+<part name="parameters" element="tns:allOpenRequestsResponse"/>
+</message>
+<message name="closeRequest">
+<part name="parameters" element="tns:closeRequest"/>
+</message>
+<message name="closeRequestResponse">
+<part name="parameters" element="tns:closeRequestResponse"/>
+</message>
+<message name="allUserRequest">
+<part name="parameters" element="tns:allUserRequest"/>
+</message>
+<message name="allUserRequestResponse">
+<part name="parameters" element="tns:allUserRequestResponse"/>
+</message>
+<message name="datosSolicitud">
+<part name="parameters" element="tns:datosSolicitud"/>
+</message>
+<message name="datosSolicitudResponse">
+<part name="parameters" element="tns:datosSolicitudResponse"/>
+</message>
+<message name="borrarUsuario">
+<part name="parameters" element="tns:borrarUsuario"/>
+</message>
+<message name="borrarUsuarioResponse">
+<part name="parameters" element="tns:borrarUsuarioResponse"/>
+</message>
+<message name="todasEmpresas">
+<part name="parameters" element="tns:todasEmpresas"/>
+</message>
+<message name="todasEmpresasResponse">
+<part name="parameters" element="tns:todasEmpresasResponse"/>
+</message>
+<message name="nuevaEmpresa">
+<part name="parameters" element="tns:nuevaEmpresa"/>
+</message>
+<message name="nuevaEmpresaResponse">
+<part name="parameters" element="tns:nuevaEmpresaResponse"/>
+</message>
+<message name="crearSolicitud">
+<part name="parameters" element="tns:crearSolicitud"/>
+</message>
+<message name="crearSolicitudResponse">
+<part name="parameters" element="tns:crearSolicitudResponse"/>
+</message>
+<message name="nuevoUsuario">
+<part name="parameters" element="tns:nuevoUsuario"/>
+</message>
+<message name="nuevoUsuarioResponse">
+<part name="parameters" element="tns:nuevoUsuarioResponse"/>
+</message>
+<message name="allUsers">
+<part name="parameters" element="tns:allUsers"/>
+</message>
+<message name="allUsersResponse">
+<part name="parameters" element="tns:allUsersResponse"/>
+</message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
 <message name="login">
 <part name="parameters" element="tns:login"/>
 </message>
@@ -16,25 +100,63 @@
 <message name="allrequirimientosResponse">
 <part name="parameters" element="tns:allrequirimientosResponse"/>
 </message>
-<message name="allUsers">
-<part name="parameters" element="tns:allUsers"/>
-</message>
-<message name="allUsersResponse">
-<part name="parameters" element="tns:allUsersResponse"/>
-</message>
-<message name="crearSolicitud">
-<part name="parameters" element="tns:crearSolicitud"/>
-</message>
-<message name="crearSolicitudResponse">
-<part name="parameters" element="tns:crearSolicitudResponse"/>
-</message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
-</message>
 <portType name="SolvingWS">
+<operation name="allClosedRequests">
+<input wsam:Action="http://server.usach.cl/SolvingWS/allClosedRequestsRequest" message="tns:allClosedRequests"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/allClosedRequestsResponse" message="tns:allClosedRequestsResponse"/>
+</operation>
+<operation name="buscarUsuario">
+<input wsam:Action="http://server.usach.cl/SolvingWS/buscarUsuarioRequest" message="tns:buscarUsuario"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/buscarUsuarioResponse" message="tns:buscarUsuarioResponse"/>
+</operation>
+<operation name="cambiarPassword">
+<input wsam:Action="http://server.usach.cl/SolvingWS/cambiarPasswordRequest" message="tns:cambiarPassword"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/cambiarPasswordResponse" message="tns:cambiarPasswordResponse"/>
+</operation>
+<operation name="allOpenRequests">
+<input wsam:Action="http://server.usach.cl/SolvingWS/allOpenRequestsRequest" message="tns:allOpenRequests"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/allOpenRequestsResponse" message="tns:allOpenRequestsResponse"/>
+</operation>
+<operation name="closeRequest">
+<input wsam:Action="http://server.usach.cl/SolvingWS/closeRequestRequest" message="tns:closeRequest"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/closeRequestResponse" message="tns:closeRequestResponse"/>
+</operation>
+<operation name="allUserRequest">
+<input wsam:Action="http://server.usach.cl/SolvingWS/allUserRequestRequest" message="tns:allUserRequest"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/allUserRequestResponse" message="tns:allUserRequestResponse"/>
+</operation>
+<operation name="datosSolicitud">
+<input wsam:Action="http://server.usach.cl/SolvingWS/datosSolicitudRequest" message="tns:datosSolicitud"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/datosSolicitudResponse" message="tns:datosSolicitudResponse"/>
+</operation>
+<operation name="borrarUsuario">
+<input wsam:Action="http://server.usach.cl/SolvingWS/borrarUsuarioRequest" message="tns:borrarUsuario"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/borrarUsuarioResponse" message="tns:borrarUsuarioResponse"/>
+</operation>
+<operation name="todasEmpresas">
+<input wsam:Action="http://server.usach.cl/SolvingWS/todasEmpresasRequest" message="tns:todasEmpresas"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/todasEmpresasResponse" message="tns:todasEmpresasResponse"/>
+</operation>
+<operation name="nuevaEmpresa">
+<input wsam:Action="http://server.usach.cl/SolvingWS/nuevaEmpresaRequest" message="tns:nuevaEmpresa"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/nuevaEmpresaResponse" message="tns:nuevaEmpresaResponse"/>
+</operation>
+<operation name="crearSolicitud">
+<input wsam:Action="http://server.usach.cl/SolvingWS/crearSolicitudRequest" message="tns:crearSolicitud"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/crearSolicitudResponse" message="tns:crearSolicitudResponse"/>
+</operation>
+<operation name="nuevoUsuario">
+<input wsam:Action="http://server.usach.cl/SolvingWS/nuevoUsuarioRequest" message="tns:nuevoUsuario"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/nuevoUsuarioResponse" message="tns:nuevoUsuarioResponse"/>
+</operation>
+<operation name="allUsers">
+<input wsam:Action="http://server.usach.cl/SolvingWS/allUsersRequest" message="tns:allUsers"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/allUsersResponse" message="tns:allUsersResponse"/>
+</operation>
+<operation name="hello">
+<input wsam:Action="http://server.usach.cl/SolvingWS/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://server.usach.cl/SolvingWS/helloResponse" message="tns:helloResponse"/>
+</operation>
 <operation name="login">
 <input wsam:Action="http://server.usach.cl/SolvingWS/loginRequest" message="tns:login"/>
 <output wsam:Action="http://server.usach.cl/SolvingWS/loginResponse" message="tns:loginResponse"/>
@@ -43,21 +165,135 @@
 <input wsam:Action="http://server.usach.cl/SolvingWS/allrequirimientosRequest" message="tns:allrequirimientos"/>
 <output wsam:Action="http://server.usach.cl/SolvingWS/allrequirimientosResponse" message="tns:allrequirimientosResponse"/>
 </operation>
-<operation name="allUsers">
-<input wsam:Action="http://server.usach.cl/SolvingWS/allUsersRequest" message="tns:allUsers"/>
-<output wsam:Action="http://server.usach.cl/SolvingWS/allUsersResponse" message="tns:allUsersResponse"/>
-</operation>
-<operation name="crearSolicitud">
-<input wsam:Action="http://server.usach.cl/SolvingWS/crearSolicitudRequest" message="tns:crearSolicitud"/>
-<output wsam:Action="http://server.usach.cl/SolvingWS/crearSolicitudResponse" message="tns:crearSolicitudResponse"/>
-</operation>
-<operation name="hello">
-<input wsam:Action="http://server.usach.cl/SolvingWS/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://server.usach.cl/SolvingWS/helloResponse" message="tns:helloResponse"/>
-</operation>
 </portType>
 <binding name="SolvingWSPortBinding" type="tns:SolvingWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="allClosedRequests">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="buscarUsuario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cambiarPassword">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="allOpenRequests">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="closeRequest">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="allUserRequest">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="datosSolicitud">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="borrarUsuario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="todasEmpresas">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="nuevaEmpresa">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="crearSolicitud">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="nuevoUsuario">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="allUsers">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="login">
 <soap:operation soapAction=""/>
 <input>
@@ -68,33 +304,6 @@
 </output>
 </operation>
 <operation name="allrequirimientos">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="allUsers">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="crearSolicitud">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="hello">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
